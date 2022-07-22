@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import HomeView from "../views/HomeView.vue";
+import HomeView from "../views/Home/HomeView.vue";
 
 Vue.use(VueRouter);
 
@@ -10,12 +10,70 @@ const routes = [
     name: "home",
     component: HomeView,
   },
-  // {
-  //   path: "/about",
-  //   name: "about",
-  //   component: () =>
-  //     import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
-  // },
+
+  /* Explore Route */
+  {
+    name: "explore",
+    path: "/explore",
+    component: () =>
+      import(
+        /* webpackChunkName: "explore" */ "@/views/Explore/exploreMain.vue"
+      ),
+  },
+
+  /* Direct Routes */
+  {
+    path: "/direct",
+    component: () =>
+      import(/* webpackChunkName: "direct" */ "@/views/Direct/directMain.vue"),
+
+    children: [
+      {
+        name: "inbox",
+        path: "/",
+        component: () =>
+          import(
+            /* webpackChunkName: "directInbox" */ "@/views/Direct/directInbox.vue"
+          ),
+      },
+    ],
+  },
+
+  /* Profile Routes */
+  {
+    path: "/profile",
+    component: () =>
+      import(
+        /* webpackChunkName: "profile" */ "@/views/Profile/profileMain.vue"
+      ),
+
+    children: [
+      {
+        name: "profilePosts",
+        path: "/",
+        component: () =>
+          import(
+            /* webpackChunkName: "profilePosts" */ "@/views/Profile/profilePosts.vue"
+          ),
+      },
+      {
+        name: "profileSaved",
+        path: "saved",
+        component: () =>
+          import(
+            /* webpackChunkName: "profileSaved" */ "@/views/Profile/profileSaved.vue"
+          ),
+      },
+      {
+        name: "profileTagged",
+        path: "tagged",
+        component: () =>
+          import(
+            /* webpackChunkName: "profileTagged" */ "@/views/Profile/profileTagged.vue"
+          ),
+      },
+    ],
+  },
 ];
 
 const router = new VueRouter({
