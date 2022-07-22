@@ -1,11 +1,7 @@
 <template>
   <header>
     <section>
-      <div class="brand">
-        <router-link to="/">
-          <h2>ErdalGram</h2>
-        </router-link>
-      </div>
+      <header-brand />
 
       <header-search />
 
@@ -15,16 +11,17 @@
 </template>
 
 <script>
+import HeaderBrand from "./headerBrand.vue";
 import HeaderNavigation from "./headerNavigation.vue";
 import HeaderSearch from "./headerSearch.vue";
 
 export default {
   name: "appHeader",
-  components: { HeaderNavigation, HeaderSearch },
+  components: { HeaderNavigation, HeaderSearch, HeaderBrand },
 };
 </script>
 
-<style scoped>
+<style>
 header {
   width: 100%;
   height: 60px;
@@ -38,7 +35,6 @@ header section {
   height: 100%;
   width: 100%;
   max-width: calc(935px + 40px);
-
   padding: 0 20px;
 
   display: flex;

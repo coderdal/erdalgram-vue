@@ -16,6 +16,11 @@
           <explore-icon />
         </router-link>
       </li>
+      <li>
+        <router-link to="/profile" active-class="active" exact>
+          <user-avatar :size="24" />
+        </router-link>
+      </li>
     </ul>
   </nav>
 </template>
@@ -24,12 +29,15 @@
 import HomeIcon from "@/assets/icons/HomeIcon.vue";
 import DirectIcon from "@/assets/icons/DirectIcon.vue";
 import ExploreIcon from "@/assets/icons/ExploreIcon.vue";
+import UserAvatar from "../userAvatar.vue";
+
 export default {
   name: "headerNavigation",
   components: {
     HomeIcon,
     DirectIcon,
     ExploreIcon,
+    UserAvatar,
   },
 };
 </script>
