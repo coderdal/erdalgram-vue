@@ -30,7 +30,7 @@ const routes = [
     children: [
       {
         name: "inbox",
-        path: "/",
+        path: "inbox",
         component: () =>
           import(
             /* webpackChunkName: "directInbox" */ "@/views/Direct/directInbox.vue"
