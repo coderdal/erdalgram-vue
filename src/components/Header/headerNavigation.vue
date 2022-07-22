@@ -18,7 +18,7 @@
       </li>
       <li>
         <router-link to="/profile" active-class="active" exact>
-          <user-avatar :size="24" />
+          <user-avatar :size="26" />
         </router-link>
       </li>
     </ul>
@@ -46,7 +46,7 @@ export default {
 header section nav .navigation {
   list-style: none;
   display: flex;
-  gap: 16px;
+  gap: 18px;
 }
 
 header section nav .navigation .active path {
