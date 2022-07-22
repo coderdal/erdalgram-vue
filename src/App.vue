@@ -1,12 +1,21 @@
 <template>
-  <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
+  <main id="app">
+    <app-header></app-header>
+
     <router-view />
-  </div>
+  </main>
 </template>
+
+<script>
+import appHeader from "@/components/Header/appHeader.vue";
+
+export default {
+  name: "App",
+  components: {
+    appHeader,
+  },
+};
+</script>
 
 <style>
 @import url("variables.css");
