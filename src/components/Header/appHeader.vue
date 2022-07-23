@@ -29,6 +29,9 @@ header {
   padding: 0 160px;
 
   border-bottom: 1px solid var(--border-color);
+
+  display: flex;
+  justify-content: center;
 }
 
 header section {
@@ -36,6 +39,7 @@ header section {
   width: 100%;
   max-width: calc(935px + 40px);
   padding: 0 20px;
+  gap: 30px;
 
   display: flex;
   align-items: center;
@@ -45,5 +49,31 @@ header section {
 header a {
   text-decoration: none;
   color: var(--text-color);
+}
+
+/* Media Queries */
+
+@media screen and (max-width: 1300px) {
+  header {
+    padding: 0 80px;
+  }
+}
+
+@media screen and (max-width: 915px) {
+  header {
+    padding: 0 40px;
+  }
+}
+
+@media screen and (max-width: 715px) {
+  header .search {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  header {
+    padding: 0 18px;
+  }
 }
 </style>
