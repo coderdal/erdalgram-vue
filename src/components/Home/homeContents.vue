@@ -21,7 +21,26 @@
             srcset=""
           />
         </div>
-        <div class="post-details"></div>
+        <div class="post-details">
+          <div class="post-actions">
+            <div class="social-actions">
+              <button>
+                <like-icon />
+              </button>
+              <button>
+                <comment-icon />
+              </button>
+              <button>
+                <share-icon />
+              </button>
+            </div>
+            <div class="save">
+              <button>
+                <save-icon />
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -30,8 +49,20 @@
 <script>
 import ThreeDotsIcon from "@/assets/icons/ThreeDotsIcon.vue";
 import userAvatar from "../userAvatar.vue";
+import LikeIcon from "@/assets/icons/LikeIcon.vue";
+import CommentIcon from "@/assets/icons/CommentIcon.vue";
+import ShareIcon from "@/assets/icons/ShareIcon.vue";
+import SaveIcon from "@/assets/icons/SaveIcon.vue";
+
 export default {
-  components: { userAvatar, ThreeDotsIcon },
+  components: {
+    userAvatar,
+    ThreeDotsIcon,
+    LikeIcon,
+    CommentIcon,
+    ShareIcon,
+    SaveIcon,
+  },
   name: "homeContents",
 };
 </script>
@@ -52,6 +83,43 @@ export default {
 .content-list .post {
   background: var(--bg-color);
 }
+
+/* Post Details */
+
+.content-list .post .post-details {
+  border: 1px solid var(--border-color);
+  border-radius: 0px 0px 8px 8px;
+  width: 100%;
+}
+
+.content-list .post .post-details .post-actions {
+  padding: 12px 15px;
+  display: flex;
+}
+
+.content-list .post .post-details .post-actions .social-actions {
+  display: flex;
+  gap: 16px;
+}
+
+.content-list .post .post-details .post-actions button {
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: 200ms opacity ease-in-out;
+}
+
+.content-list .post .post-details .post-actions button:hover {
+  opacity: 0.8;
+}
+
+.content-list .post .post-details .post-actions .save {
+  flex: 1;
+  text-align: right;
+}
+
+/* Post Body */
 
 .content-list .post .post-body {
   width: 100%;
