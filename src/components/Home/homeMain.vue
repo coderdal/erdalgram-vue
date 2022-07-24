@@ -20,8 +20,6 @@ export default {
   max-width: 820px;
   margin: 28px auto;
 
-  border: 1px solid red;
-
   display: flex;
   flex-direction: row;
   gap: 30px;
