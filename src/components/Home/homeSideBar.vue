@@ -9,9 +9,9 @@
 
       <div class="profileDetails">
         <router-link to="/profile">
-          <h4>erdalv1</h4>
+          <h4>coderdal</h4>
         </router-link>
-        <p>Erdal</p>
+        <p>Muhammed ERDAL</p>
       </div>
 
       <div class="switch">
