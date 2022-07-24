@@ -1,12 +1,12 @@
 <template>
-  <div class="home">
-    <p>Home</p>
-  </div>
+  <home-main />
 </template>
 
 <script>
+import HomeMain from "@/components/Home/homeMain.vue";
+
 export default {
   name: "HomeView",
-  components: {},
+  components: { HomeMain },
 };
 </script>
