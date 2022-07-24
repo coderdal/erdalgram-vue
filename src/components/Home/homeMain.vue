@@ -18,7 +18,7 @@ export default {
 <style scoped>
 .home {
   max-width: 820px;
-  margin: 0 auto;
+  margin: 28px auto;
 
   border: 1px solid red;
 
