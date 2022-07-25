@@ -1,7 +1,7 @@
 <template>
   <section class="contents">
     <div class="content-list">
-      <post-card />
+      <post-card :comments="12" />
       <post-card />
       <post-card />
     </div>

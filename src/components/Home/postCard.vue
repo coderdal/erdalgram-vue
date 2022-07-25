@@ -8,6 +8,7 @@
         <router-link :to="/profile/ + username">
           <h4>{{ username }}</h4>
         </router-link>
+        <p v-if="location">{{ location }}</p>
       </div>
 
       <div class="post-options">
@@ -43,6 +44,9 @@
           <p>
             {{ description }}
           </p>
+        </div>
+        <div class="show-comments" v-if="comments > 0">
+          <p>View all {{ comments }} comments</p>
         </div>
         <p>{{ date }}</p>
       </div>
@@ -89,6 +93,12 @@ export default {
     likeCount: {
       type: Number,
       default: 620,
+    },
+    location: {
+      type: String,
+    },
+    comments: {
+      type: Number,
     },
   },
 };
@@ -165,10 +175,18 @@ export default {
 
 .content-list .post .post-footer .post-details > p {
   font-weight: 400;
-  padding: 14px 0px;
+  padding: 10px 0px 20px 0px;
   color: var(--text-light-color);
   text-transform: uppercase;
   font-size: 0.8em;
+}
+
+.content-list .post .post-footer .post-details .show-comments {
+  font-weight: 400;
+  padding: 6px 0px;
+  color: var(--text-light-color);
+  font-size: 0.98em;
+  cursor: pointer;
 }
 
 /* Post Body */
