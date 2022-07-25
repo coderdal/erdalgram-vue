@@ -2,7 +2,7 @@
   <div class="post">
     <div class="post-header">
       <router-link :to="/profile/ + username">
-        <user-avatar :size="32" isBordered />
+        <user-avatar :size="32" :isBordered="isBordered" />
       </router-link>
       <div class="post-author">
         <router-link :to="/profile/ + username">
@@ -102,6 +102,10 @@ export default {
     },
     comments: {
       type: Number,
+    },
+    isBordered: {
+      type: Boolean,
+      default: false,
     },
   },
 };
