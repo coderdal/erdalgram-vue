@@ -50,17 +50,19 @@
         </div>
         <p>{{ date }}</p>
       </div>
+      <add-comment />
     </div>
   </div>
 </template>
 
 <script>
 import ThreeDotsIcon from "@/assets/icons/ThreeDotsIcon.vue";
-import userAvatar from "../userAvatar.vue";
+import userAvatar from "../../userAvatar.vue";
 import LikeIcon from "@/assets/icons/LikeIcon.vue";
 import CommentIcon from "@/assets/icons/CommentIcon.vue";
 import ShareIcon from "@/assets/icons/ShareIcon.vue";
 import SaveIcon from "@/assets/icons/SaveIcon.vue";
+import addComment from "@/components/Home/Post/addComment.vue";
 
 export default {
   name: "postCard",
@@ -71,6 +73,7 @@ export default {
     CommentIcon,
     ShareIcon,
     SaveIcon,
+    addComment,
   },
   props: {
     src: {

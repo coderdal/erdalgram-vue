@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import postCard from "@/components/Home/postCard.vue";
+import postCard from "@/components/Home/Post/postCard.vue";
 
 export default {
   name: "homeContents",
