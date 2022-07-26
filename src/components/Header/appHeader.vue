@@ -79,4 +79,16 @@ header a {
     padding: 0 18px;
   }
 }
+
+@media screen and (max-width: 400px) {
+  header {
+    padding: 0 0px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  header section {
+    padding: 0 10px;
+  }
+}
 </style>

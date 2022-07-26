@@ -114,9 +114,9 @@ export default {
 <style scoped>
 .content-list .post {
   background: var(--bg-color);
-  margin-bottom: 46px;
   max-width: 470px;
-  min-height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Post Footer */
@@ -218,7 +218,7 @@ export default {
 /* Post Header */
 
 .content-list .post .post-header {
-  padding: 0px 12px;
+  padding: 5px 12px;
   height: 60px;
   display: flex;
   align-items: center;

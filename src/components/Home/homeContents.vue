@@ -30,6 +30,6 @@ export default {
   height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  gap: 25px;
 }
 </style>
