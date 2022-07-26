@@ -24,4 +24,12 @@ export default {
   flex-direction: row;
   gap: 30px;
 }
+
+/* Media Queries */
+
+@media screen and (max-width: 1000px) {
+  .home {
+    justify-content: center;
+  }
+}
 </style>

@@ -115,6 +115,8 @@ export default {
 .content-list .post {
   background: var(--bg-color);
   margin-bottom: 46px;
+  max-width: 470px;
+  min-height: 100%;
 }
 
 /* Post Footer */

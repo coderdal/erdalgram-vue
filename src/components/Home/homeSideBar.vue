@@ -307,4 +307,12 @@ export default {
   font-size: 0.85em;
   margin-top: 16px;
 }
+
+/* Media Queries */
+
+@media screen and (max-width: 1000px) {
+  .sidebar {
+    display: none;
+  }
+}
 </style>
