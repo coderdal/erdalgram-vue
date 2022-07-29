@@ -1,9 +1,12 @@
 <template>
-  <h1>share post view</h1>
+  <share-main />
 </template>
 
 <script>
+import shareMain from "@/components/SharePost/shareMain.vue";
+
 export default {
+  components: { shareMain },
   name: "sharePost",
 };
 </script>
