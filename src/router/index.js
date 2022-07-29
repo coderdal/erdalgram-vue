@@ -21,6 +21,14 @@ const routes = [
       ),
   },
 
+  /* Share Post Route */
+  {
+    name: "share",
+    path: "/share",
+    component: () =>
+      import(/* webpackChunkName: "share" */ "@/views/Share/sharePost.vue"),
+  },
+
   /* Direct Routes */
   {
     path: "/direct",

@@ -12,6 +12,11 @@
         </router-link>
       </li>
       <li>
+        <router-link to="/share" active-class="active" exact>
+          <share-post-icon />
+        </router-link>
+      </li>
+      <li>
         <router-link to="/explore" active-class="active" exact>
           <explore-icon />
         </router-link>
@@ -30,6 +35,7 @@ import HomeIcon from "@/assets/icons/HomeIcon.vue";
 import DirectIcon from "@/assets/icons/DirectIcon.vue";
 import ExploreIcon from "@/assets/icons/ExploreIcon.vue";
 import UserAvatar from "../userAvatar.vue";
+import SharePostIcon from "@/assets/icons/SharePostIcon.vue";
 
 export default {
   name: "headerNavigation",
@@ -38,6 +44,7 @@ export default {
     DirectIcon,
     ExploreIcon,
     UserAvatar,
+    SharePostIcon,
   },
 };
 </script>
@@ -69,5 +76,11 @@ header section nav .navigation .active svg .filled {
 
 header section nav .navigation .active svg .nonactive {
   display: none !important;
+}
+
+/* Solution for share icon */
+
+header section nav .navigation .active svg line {
+  stroke: var(--bg-color);
 }
 </style>
