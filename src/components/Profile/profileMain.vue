@@ -102,4 +102,29 @@ export default {
   font-size: 1.1em;
   max-width: 100%;
 }
+
+/* Media Queries */
+
+@media screen and (max-width: 715px) {
+  .profile-main {
+    gap: 60px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .profile-main {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .profile-main .profile-details .top {
+    justify-content: center;
+  }
+
+  .profile-main .profile-details .stats {
+    gap: 15px;
+    justify-content: center;
+  }
+}
 </style>
