@@ -3,31 +3,26 @@
     <section class="title">
       <h1>Create new post</h1>
     </section>
-    <section class="drag">
-      <img
-        src="/assets/images/shareLogo.png"
-        alt="upload image"
-        @click="focusOnInput"
-      />
-      <input
-        type="file"
-        accept="image/jpeg,image/png,image/heic,image/heif"
-        id="image"
-        name="image"
-        ref="input"
-      />
-      <h2>Drag photos and videos here</h2>
-      <p @click="focusOnInput">Select from computer</p>
-    </section>
+    <post-details v-if="uploadedFile.length > 1" :image="uploadedFile" />
+    <upload-file @fileUpload="catchFileUpload($event)" v-else />
   </main>
 </template>
 
 <script>
+import PostDetails from "./postDetails.vue";
+import uploadFile from "./uploadFile.vue";
+
 export default {
+  components: { uploadFile, PostDetails },
   name: "sharePost",
+  data() {
+    return {
+      uploadedFile: "",
+    };
+  },
   methods: {
-    focusOnInput() {
-      this.$refs.input.click();
+    catchFileUpload(e) {
+      this.uploadedFile = e;
     },
   },
 };
@@ -56,36 +51,5 @@ main .title {
 main .title h1 {
   font-size: 1.4em;
   font-weight: 500;
-}
-
-/* Main Drag */
-
-main .drag {
-  margin-top: 30px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-main .drag h2 {
-  font-size: 1.6em;
-  font-weight: 300;
-  padding: 10px;
-}
-
-main .drag p {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  background: var(--blue-color);
-  color: var(--bg-color);
-  font-weight: 600;
-  cursor: pointer;
-  padding: 6px 10px;
-  border-radius: 4px;
-}
-
-main .drag input {
-  opacity: 0;
 }
 </style>
