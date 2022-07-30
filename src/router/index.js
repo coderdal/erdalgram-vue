@@ -52,7 +52,7 @@ const routes = [
     path: "/profile",
     component: () =>
       import(
-        /* webpackChunkName: "profile" */ "@/views/Profile/profileMain.vue"
+        /* webpackChunkName: "profile" */ "@/views/Profile/profileMainView.vue"
       ),
 
     children: [
