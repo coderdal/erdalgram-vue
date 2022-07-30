@@ -1,30 +1,18 @@
 <template>
-  <div>
+  <profile-container>
     <profile-main />
-    <ul>
-      <li>
-        <router-link to="/profile" active-class="active">Posts</router-link>
-      </li>
-      <li>
-        <router-link to="/profile/saved" active-class="active"
-          >Saved</router-link
-        >
-      </li>
-      <li>
-        <router-link to="/profile/tagged" active-class="active"
-          >Tagged</router-link
-        >
-      </li>
-    </ul>
+    <profile-navigation />
     <router-view></router-view>
-  </div>
+  </profile-container>
 </template>
 
 <script>
 import profileMain from "@/components/Profile/profileMain.vue";
+import ProfileNavigation from "@/components/Profile/profileNavigation.vue";
+import ProfileContainer from "@/components/Profile/profileContainer.vue";
 
 export default {
-  components: { profileMain },
+  components: { profileMain, ProfileNavigation, ProfileContainer },
   name: "profileMainView",
 };
 </script>
