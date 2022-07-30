@@ -1,9 +1,12 @@
 <template>
-  <h1>Profile Tagged</h1>
+  <content-list />
 </template>
 
 <script>
+import contentList from "@/components/contentList.vue";
+
 export default {
+  components: { contentList },
   name: "profileTagged",
 };
 </script>

@@ -38,6 +38,7 @@ export default {
   border-top: 1px solid var(--border-color);
   display: flex;
   justify-content: center;
+  margin-top: 35px;
 }
 
 .profile-navigation nav {
