@@ -9,9 +9,9 @@
         <button>Log Out</button>
       </div>
       <div class="stats">
-        <div class="stat"><span>0</span> gönderi</div>
-        <div class="stat"><span>0</span> takipçi</div>
-        <div class="stat"><span>0</span> takip</div>
+        <div class="stat"><span>0</span> posts</div>
+        <div class="stat"><span>0</span> followersçi</div>
+        <div class="stat"><span>0</span> following</div>
       </div>
       <div class="full-name">Erdal</div>
       <div class="biography">
