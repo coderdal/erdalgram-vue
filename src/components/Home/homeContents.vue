@@ -1,20 +1,20 @@
 <template>
   <section class="contents">
     <div class="content-list">
-      <post-card :comments="12" />
-      <post-card />
-      <post-card />
+      <home-post-card :comments="12" />
+      <home-post-card />
+      <home-post-card />
     </div>
   </section>
 </template>
 
 <script>
-import postCard from "@/components/Home/Post/postCard.vue";
+import homePostCard from "@/components/Home/Post/homePostCard.vue";
 
 export default {
   name: "homeContents",
   components: {
-    postCard,
+    homePostCard,
   },
 };
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="post">
+  <article class="post">
     <div class="post-header">
       <router-link :to="/profile/ + username">
         <user-avatar :size="32" :isBordered="isBordered" />
@@ -52,7 +52,7 @@
       </div>
       <add-comment />
     </div>
-  </div>
+  </article>
 </template>
 
 <script>
@@ -65,7 +65,7 @@ import SaveIcon from "@/assets/icons/SaveIcon.vue";
 import addComment from "@/components/Home/Post/addComment.vue";
 
 export default {
-  name: "postCard",
+  name: "homePostCard",
   components: {
     userAvatar,
     ThreeDotsIcon,
