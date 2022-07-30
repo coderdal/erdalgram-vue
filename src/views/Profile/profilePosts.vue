@@ -1,9 +1,12 @@
 <template>
-  <h1>Profile Posts</h1>
+  <content-list />
 </template>
 
 <script>
+import contentList from "@/components/contentList.vue";
+
 export default {
+  components: { contentList },
   name: "profilePosts",
 };
 </script>
