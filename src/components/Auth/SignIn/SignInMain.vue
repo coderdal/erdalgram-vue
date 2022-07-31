@@ -28,6 +28,14 @@
       <h2 v-if="isErrorDuringAuth" class="error-message">
         {{ isErrorDuringAuth }}
       </h2>
+
+      <button
+        class="switch-component"
+        v-if="activeComponent === 'sign-in-main'"
+        @click="switchComponent"
+      >
+        Don't have an account? <span>Sign up</span>
+      </button>
     </section>
   </main>
 </template>
@@ -45,6 +53,12 @@ export default {
         password: "",
       },
     };
+  },
+  props: {
+    activeComponent: {
+      type: String,
+      required: true,
+    },
   },
   methods: {
     formSubmit() {
@@ -64,6 +78,10 @@ export default {
         this.$store.commit("clearErrorMessage");
         this.$router.replace("/");
       }, 4000);
+    },
+
+    switchComponent() {
+      this.$emit("switchComponent", "sign-up-main");
     },
   },
   computed: {
@@ -145,5 +163,22 @@ button[disabled] {
   color: rgb(226, 13, 5);
   font-weight: 500;
   font-size: 1.1em;
+}
+
+/* Switch component buttons */
+
+.switch-component {
+  width: 220px;
+  margin: 20px auto;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 1em;
+}
+
+.switch-component span {
+  color: var(--blue-color);
+  font-weight: 600;
+  cursor: pointer;
 }
 </style>

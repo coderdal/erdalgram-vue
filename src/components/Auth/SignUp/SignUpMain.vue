@@ -1,7 +1,7 @@
 <template>
   <main>
     <section>
-      <h2>Sign Up To ErdalGram</h2>
+      <h2>Sign Up to ErdalGram</h2>
       <form @submit.prevent="formSubmit">
         <input-box
           type="text"
@@ -27,6 +27,14 @@
       <h2 v-if="isErrorDuringAuth" class="error-message">
         {{ isErrorDuringAuth }}
       </h2>
+
+      <button
+        class="switch-component"
+        v-if="activeComponent === 'sign-up-main'"
+        @click="switchComponent"
+      >
+        Have an account? <span>Log in</span>
+      </button>
     </section>
   </main>
 </template>
@@ -44,6 +52,12 @@ export default {
       },
     };
   },
+  props: {
+    activeComponent: {
+      type: String,
+      required: true,
+    },
+  },
   methods: {
     formSubmit() {
       this.$store.dispatch("signUp", this.signUpData);
@@ -57,8 +71,13 @@ export default {
     redirectToSignIn() {
       setTimeout(() => {
         this.$store.commit("clearErrorMessage");
-        this.$router.replace("/signin");
+        //Refresh the page
+        this.$router.go();
       }, 4000);
+    },
+
+    switchComponent() {
+      this.$emit("switchComponent", "sign-in-main");
     },
   },
   computed: {
@@ -139,5 +158,21 @@ button[disabled] {
   color: rgb(226, 13, 5);
   font-weight: 500;
   font-size: 1.1em;
+}
+
+/* Switch component buttons */
+.switch-component {
+  width: 220px;
+  margin: 20px auto;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 1em;
+}
+
+.switch-component span {
+  color: var(--blue-color);
+  font-weight: 600;
+  cursor: pointer;
 }
 </style>

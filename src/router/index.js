@@ -16,34 +16,18 @@ const routes = [
       if (store.getters.getIsAuthenticated) {
         next();
       } else {
-        next("/signin");
+        next("/auth");
       }
     },
   },
 
-  /* Sign In - Sign Up Routes */
+  /* Auth Route */
 
   {
-    name: "signin",
-    path: "/signin",
+    name: "auth",
+    path: "/auth",
     component: () =>
-      import(/* webpackChunkName: "signin" */ "@/views/SignIn/SignInView.vue"),
-
-    /* Auth Guard */
-    beforeEnter(to, from, next) {
-      if (!store.getters.getIsAuthenticated) {
-        next();
-      } else {
-        next("/");
-      }
-    },
-  },
-
-  {
-    name: "signup",
-    path: "/signup",
-    component: () =>
-      import(/* webpackChunkName: "signup" */ "@/views/SignUp/SignUpView.vue"),
+      import(/* webpackChunkName: "signin" */ "@/views/Auth/AuthView.vue"),
 
     /* Auth Guard */
     beforeEnter(to, from, next) {
@@ -69,7 +53,7 @@ const routes = [
       if (store.getters.getIsAuthenticated) {
         next();
       } else {
-        next("/signin");
+        next("/auth");
       }
     },
   },
@@ -86,7 +70,7 @@ const routes = [
       if (store.getters.getIsAuthenticated) {
         next();
       } else {
-        next("/signin");
+        next("/auth");
       }
     },
   },
@@ -102,7 +86,7 @@ const routes = [
       if (store.getters.getIsAuthenticated) {
         next();
       } else {
-        next("/signin");
+        next("/auth");
       }
     },
 
@@ -120,7 +104,7 @@ const routes = [
           if (store.getters.getIsAuthenticated) {
             next();
           } else {
-            next("/signin");
+            next("/auth");
           }
         },
       },
@@ -140,7 +124,7 @@ const routes = [
       if (store.getters.getIsAuthenticated) {
         next();
       } else {
-        next("/signin");
+        next("/auth");
       }
     },
 
@@ -158,7 +142,7 @@ const routes = [
           if (store.getters.getIsAuthenticated) {
             next();
           } else {
-            next("/signin");
+            next("/auth");
           }
         },
       },
@@ -175,7 +159,7 @@ const routes = [
           if (store.getters.getIsAuthenticated) {
             next();
           } else {
-            next("/signin");
+            next("/auth");
           }
         },
       },
@@ -192,7 +176,7 @@ const routes = [
           if (store.getters.getIsAuthenticated) {
             next();
           } else {
-            next("/signin");
+            next("/auth");
           }
         },
       },

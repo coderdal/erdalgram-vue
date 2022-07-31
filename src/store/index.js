@@ -39,30 +39,9 @@ export default new Vuex.Store({
         commit("setToken", token);
         router.push("/");
       } else {
-        router.push("/signin");
+        router.push("/auth");
         return false;
       }
-    },
-
-    /* Sign Up */
-
-    signUp({ state, commit }, signUpData) {
-      axios
-        .post(
-          `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${state.fbAPIKey}`,
-          {
-            ...signUpData,
-            returnSecureToken: true,
-          }
-        )
-        .then((response) => {
-          console.log(response);
-          commit("setErrorMessage", "SIGNUP_SUCCESS");
-          return response.data;
-        })
-        .catch((error) => {
-          commit("setErrorMessage", error.response.data.error.message);
-        });
     },
 
     /* Sign In */
@@ -96,7 +75,28 @@ export default new Vuex.Store({
       // Remove from localstorage
       localStorage.removeItem("token");
       // Redirect to signin
-      router.push("/signin");
+      router.push("/auth");
+    },
+
+    /* Sign Up */
+
+    signUp({ state, commit }, signUpData) {
+      axios
+        .post(
+          `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${state.fbAPIKey}`,
+          {
+            ...signUpData,
+            returnSecureToken: true,
+          }
+        )
+        .then((response) => {
+          console.log(response);
+          commit("setErrorMessage", "SIGNUP_SUCCESS");
+          return response.data;
+        })
+        .catch((error) => {
+          commit("setErrorMessage", error.response.data.error.message);
+        });
     },
   },
   getters: {
