@@ -66,6 +66,7 @@ export default new Vuex.Store({
         .then((response) => {
           console.log(response);
           commit("setErrorMessage", "SIGNIN_SUCCESS");
+          commit("setToken", response.data.idToken);
           return response.data;
         })
         .catch((error) => {
