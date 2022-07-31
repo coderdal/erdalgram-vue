@@ -11,6 +11,22 @@ const routes = [
     component: HomeView,
   },
 
+  /* Sign In - Sign Up Routes */
+
+  {
+    name: "signin",
+    path: "/signin",
+    component: () =>
+      import(/* webpackChunkName: "signin" */ "@/views/SignIn/SignInView.vue"),
+  },
+
+  {
+    name: "signup",
+    path: "/signup",
+    component: () =>
+      import(/* webpackChunkName: "signup" */ "@/views/SignUp/SignUpView.vue"),
+  },
+
   /* Explore Route */
   {
     name: "explore",
