@@ -32,12 +32,24 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    initAuth({ commit }) {
+    initAuth({ commit, dispatch }) {
       let token = localStorage.getItem("token");
 
       if (token) {
-        commit("setToken", token);
-        router.push("/");
+        let expirationDate = localStorage.getItem("expirationDate");
+        let timeNow = new Date().getTime();
+
+        if (timeNow >= +expirationDate) {
+          //token expired
+          dispatch("logout");
+        } else {
+          // get timer diff
+          let timer = +expirationDate - timeNow;
+
+          commit("setToken", token);
+          dispatch("tokenExpireTimeOut", timer);
+          router.push("/");
+        }
       } else {
         router.push("/auth");
         return false;
@@ -46,7 +58,7 @@ export default new Vuex.Store({
 
     /* Sign In */
 
-    signIn({ state, commit }, signInData) {
+    signIn({ state, commit, dispatch }, signInData) {
       axios
         .post(
           `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${state.fbAPIKey}`,
@@ -56,11 +68,18 @@ export default new Vuex.Store({
           }
         )
         .then((response) => {
-          console.log(response);
           commit("setErrorMessage", "SIGNIN_SUCCESS");
+
           commit("setToken", response.data.idToken);
+
           localStorage.setItem("token", response.data.idToken);
-          return response.data;
+
+          localStorage.setItem(
+            "expirationDate",
+            new Date().getTime() + +response.data.expiresIn * 1000
+          );
+
+          dispatch("tokenExpireTimeOut", +response.data.expiresIn * 1000);
         })
         .catch((error) => {
           commit("setErrorMessage", error.response.data.error.message);
@@ -72,8 +91,9 @@ export default new Vuex.Store({
     logout({ commit }) {
       // Remove token
       commit("clearToken");
-      // Remove from localstorage
+      // Remove token - exp date from localstorage
       localStorage.removeItem("token");
+      localStorage.removeItem("expirationDate");
       // Redirect to signin
       router.push("/auth");
     },
@@ -97,6 +117,12 @@ export default new Vuex.Store({
         .catch((error) => {
           commit("setErrorMessage", error.response.data.error.message);
         });
+    },
+
+    tokenExpireTimeOut({ dispatch }, expiresIn) {
+      setTimeout(() => {
+        dispatch("logout");
+      }, expiresIn);
     },
   },
   getters: {
