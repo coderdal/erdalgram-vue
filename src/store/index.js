@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import axios from "axios";
 
 Vue.use(Vuex);
 
@@ -20,9 +21,29 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    /* Login */
-    // login({commit, dispatch, state}, authData){
+    /* Sign Up */
+
+    signUp({ state }, signUpData) {
+      axios
+        .post(
+          `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${state.fbAPIKey}`,
+          {
+            email: signUpData.email,
+            password: signUpData.password,
+            returnSecureToken: true,
+          }
+        )
+        .then((response) => {
+          console.log(response);
+        });
+    },
+
+    // /* Login */
+
+    // login({commit}, authData){
+
     // },
+
     // /* LogOut */
     // logout({commit, dispatch, state}){
     // }

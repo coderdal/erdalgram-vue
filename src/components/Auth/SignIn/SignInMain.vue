@@ -23,7 +23,7 @@
           @inputChange="updatePassword($event)"
         />
 
-        <button type="submit">Sign In</button>
+        <button type="submit" :disabled="!isFormFilled">Sign In</button>
       </form>
     </section>
   </main>
@@ -37,16 +37,31 @@ export default {
   components: { inputBox },
   data() {
     return {
-      email: "",
-      password: "",
+      signUpData: {
+        email: "",
+        password: "",
+      },
     };
   },
   methods: {
+    formSubmit() {
+      console.log(this.signUpData);
+    },
     updateEmail(e) {
-      this.email = e;
+      this.signUpData.email = e;
     },
     updatePassword(e) {
-      this.password = e;
+      this.signUpData.password = e;
+    },
+  },
+  computed: {
+    isFormFilled() {
+      let output =
+        (this.signUpData.email.length > 0) &
+        (this.signUpData.password.length > 0)
+          ? true
+          : false;
+      return output;
     },
   },
 };
@@ -94,5 +109,11 @@ main section form button {
   color: var(--bg-color);
   padding: 8px 12px;
   border: none;
+}
+
+main section form button:disabled,
+button[disabled] {
+  cursor: default;
+  opacity: 0.6;
 }
 </style>
