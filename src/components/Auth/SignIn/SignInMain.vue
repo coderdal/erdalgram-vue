@@ -40,7 +40,7 @@ export default {
   components: { inputBox },
   data() {
     return {
-      signUpData: {
+      signInData: {
         email: "",
         password: "",
       },
@@ -48,25 +48,42 @@ export default {
   },
   methods: {
     formSubmit() {
-      console.log(this.signUpData);
+      this.$store.dispatch("signIn", this.signInData);
     },
+
     updateEmail(e) {
-      this.signUpData.email = e;
+      this.signInData.email = e;
     },
+
     updatePassword(e) {
-      this.signUpData.password = e;
+      this.signInData.password = e;
+    },
+
+    redirectToHomePage() {
+      setTimeout(() => {
+        this.$store.commit("clearErrorMessage");
+        this.$router.replace("/");
+      }, 4000);
     },
   },
   computed: {
     isFormFilled() {
       let output =
-        (this.signUpData.email.length > 0) &
-        (this.signUpData.password.length > 0)
+        (this.signInData.email.length > 0) &
+        (this.signInData.password.length > 0)
           ? true
           : false;
       return output;
     },
+
     isErrorDuringAuth() {
+      if (
+        this.$store.getters.getIsErrorDuringAuth ===
+        "Sign In Successfully. You are being redirected to the home page..."
+      ) {
+        this.redirectToHomePage();
+      }
+
       return this.$store.getters.getIsErrorDuringAuth;
     },
   },

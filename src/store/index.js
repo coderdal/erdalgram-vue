@@ -52,11 +52,26 @@ export default new Vuex.Store({
         });
     },
 
-    // /* Login */
+    // /* Sign In */
 
-    // login({commit}, authData){
-
-    // },
+    signIn({ state, commit }, signInData) {
+      axios
+        .post(
+          `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${state.fbAPIKey}`,
+          {
+            ...signInData,
+            returnSecureToken: true,
+          }
+        )
+        .then((response) => {
+          console.log(response);
+          commit("setErrorMessage", "SIGNIN_SUCCESS");
+          return response.data;
+        })
+        .catch((error) => {
+          commit("setErrorMessage", error.response.data.error.message);
+        });
+    },
 
     // /* LogOut */
     // logout({commit, dispatch, state}){
@@ -79,6 +94,13 @@ export default new Vuex.Store({
         } else if (state.IsErrorDuringAuth === "SIGNUP_SUCCESS") {
           message =
             "Sign Up Successfully. You are being redirected to the login page...";
+        } else if (state.IsErrorDuringAuth === "EMAIL_NOT_FOUND") {
+          message = "No account found with this email address.";
+        } else if (state.IsErrorDuringAuth === "INVALID_PASSWORD") {
+          message = "Invalid password.";
+        } else if (state.IsErrorDuringAuth === "SIGNIN_SUCCESS") {
+          message =
+            "Sign In Successfully. You are being redirected to the home page...";
         }
 
         return message;
