@@ -2,7 +2,7 @@
   <main>
     <section>
       <h2>Sign Up To ErdalGram</h2>
-      <form @submit.prevent="">
+      <form @submit.prevent="formSubmit">
         <input-box
           type="text"
           placeholder="E-Mail"
@@ -22,10 +22,11 @@
           @inputChange="updatePassword($event)"
         />
 
-        <button type="submit" @click="formSubmit" :disabled="!isFormFilled">
-          Sign Up
-        </button>
+        <button type="submit" :disabled="!isFormFilled">Sign Up</button>
       </form>
+      <h2 v-if="isErrorDuringAuth" class="error-message">
+        {{ isErrorDuringAuth }}
+      </h2>
     </section>
   </main>
 </template>
@@ -45,13 +46,19 @@ export default {
   },
   methods: {
     formSubmit() {
-      console.log(this.signUpData);
+      this.$store.dispatch("signUp", this.signUpData);
     },
     updateEmail(e) {
       this.signUpData.email = e;
     },
     updatePassword(e) {
       this.signUpData.password = e;
+    },
+    redirectToSignIn() {
+      setTimeout(() => {
+        this.$store.commit("clearErrorMessage");
+        this.$router.replace("/signin");
+      }, 4000);
     },
   },
   computed: {
@@ -62,6 +69,16 @@ export default {
           ? true
           : false;
       return output;
+    },
+    isErrorDuringAuth() {
+      if (
+        this.$store.getters.getIsErrorDuringAuth ===
+        "Sign Up Successfully. You are being redirected to the login page..."
+      ) {
+        this.redirectToSignIn();
+      }
+
+      return this.$store.getters.getIsErrorDuringAuth;
     },
   },
 };
@@ -115,5 +132,12 @@ main section form button:disabled,
 button[disabled] {
   cursor: default;
   opacity: 0.6;
+}
+
+.error-message {
+  margin: 15px 0px;
+  color: rgb(226, 13, 5);
+  font-weight: 500;
+  font-size: 1.1em;
 }
 </style>

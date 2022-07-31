@@ -1,9 +1,9 @@
 <template>
   <main>
     <section>
-      <h2>Sign In</h2>
+      <h2>Sign In to ErdalGram</h2>
 
-      <form @submit.prevent="">
+      <form @submit.prevent="formSubmit">
         <input-box
           type="text"
           placeholder="E-Mail"
@@ -25,6 +25,9 @@
 
         <button type="submit" :disabled="!isFormFilled">Sign In</button>
       </form>
+      <h2 v-if="isErrorDuringAuth" class="error-message">
+        {{ isErrorDuringAuth }}
+      </h2>
     </section>
   </main>
 </template>
@@ -62,6 +65,9 @@ export default {
           ? true
           : false;
       return output;
+    },
+    isErrorDuringAuth() {
+      return this.$store.getters.getIsErrorDuringAuth;
     },
   },
 };
@@ -115,5 +121,12 @@ main section form button:disabled,
 button[disabled] {
   cursor: default;
   opacity: 0.6;
+}
+
+.error-message {
+  margin: 15px 0px;
+  color: rgb(226, 13, 5);
+  font-weight: 500;
+  font-size: 1.1em;
 }
 </style>
