@@ -14,6 +14,9 @@ export default {
   components: {
     appHeader,
   },
+  created() {
+    this.$store.dispatch("initAuth");
+  },
 };
 </script>
 

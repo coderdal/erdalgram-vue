@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import axios from "axios";
+import router from "@/router/index";
 
 Vue.use(Vuex);
 
@@ -31,6 +32,18 @@ export default new Vuex.Store({
     },
   },
   actions: {
+    initAuth({ commit }) {
+      let token = localStorage.getItem("token");
+
+      if (token) {
+        commit("setToken", token);
+        router.push("/");
+      } else {
+        router.push("/signin");
+        return false;
+      }
+    },
+
     /* Sign Up */
 
     signUp({ state, commit }, signUpData) {
@@ -52,7 +65,7 @@ export default new Vuex.Store({
         });
     },
 
-    // /* Sign In */
+    /* Sign In */
 
     signIn({ state, commit }, signInData) {
       axios
@@ -67,6 +80,7 @@ export default new Vuex.Store({
           console.log(response);
           commit("setErrorMessage", "SIGNIN_SUCCESS");
           commit("setToken", response.data.idToken);
+          localStorage.setItem("token", response.data.idToken);
           return response.data;
         })
         .catch((error) => {
@@ -74,11 +88,24 @@ export default new Vuex.Store({
         });
     },
 
-    // /* LogOut */
-    // logout({commit, dispatch, state}){
-    // }
+    /* Log Out */
+
+    logout({ commit }) {
+      // Remove token
+      commit("clearToken");
+      // Remove from localstorage
+      localStorage.removeItem("token");
+      // Redirect to signin
+      router.push("/signin");
+    },
   },
   getters: {
+    /* Check is logged in */
+    getIsAuthenticated(state) {
+      return state.token !== "";
+    },
+
+    /* Get response message during api auth requests */
     getIsErrorDuringAuth(state) {
       if (state.IsErrorDuringAuth) {
         let message = "Error";

@@ -6,7 +6,7 @@
     <div class="profile-details">
       <div class="top">
         <h2 class="username">coderdal</h2>
-        <button>Log Out</button>
+        <button v-if="isLoggedIn" @click="logOut">Log Out</button>
       </div>
       <div class="stats">
         <div class="stat"><span>0</span> posts</div>
@@ -27,6 +27,16 @@ import userAvatar from "../userAvatar.vue";
 export default {
   components: { userAvatar },
   name: "profileMain",
+  methods: {
+    logOut() {
+      this.$store.dispatch("logout");
+    },
+  },
+  computed: {
+    isLoggedIn() {
+      return this.$store.getters.getIsAuthenticated;
+    },
+  },
 };
 </script>
 
