@@ -1,4 +1,4 @@
-# Instagram Clone (Vue.js)
+# ErdalGram (Vue.js)
 
 A fully responsive Instagram web UI clone developed using Vue.js and modern web technologies. This project replicates the core UI features and functionality of Instagram's web interface.
 
@@ -33,7 +33,7 @@ A fully responsive Instagram web UI clone developed using Vue.js and modern web 
 
 1. Clone the repository
 ```bash
-git clone https://github.com/coderdal/instagram-clone-vue.git
+git clone https://github.com/coderdal/erdalgram-vue.git
 cd instagram-clone-vue
 ```
 
@@ -86,7 +86,7 @@ src/
 
 ## 🤝 Contributing
 
-Contributions, issues, and feature requests are welcome! Feel free to check [issues page](https://github.com/coderdal/instagram-clone-vue/issues).
+Contributions, issues, and feature requests are welcome! Feel free to check [issues page](https://github.com/coderdal/erdalgram-vue/issues).
 
 ## 📝 License
 
@@ -94,7 +94,7 @@ This project is [MIT](LICENSE) licensed.
 
 ## 👨‍💻 Author
 
-**Your Name**
+**Muhammed Erdal**
 - GitHub: [@coderdal](https://github.com/coderdal)
 - LinkedIn: [Muhammed Erdal](https://linkedin.com/in/muhammederdal)
 
